@@ -38,9 +38,5 @@ public final class NumberUtil {
 		}
 		return result;
 	}
-	
-	public static void main(String[] args) {
-//		System.out.println(NumberUtil.randomNumb());
-	}
 
 }

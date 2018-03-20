@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.Locale;
 
 @Slf4j
-public class DateUtil {
+public class DateUtils {
 
     public static final long SECOND = 1000;
     public static final long MINUTE = SECOND * 60;
@@ -904,17 +904,17 @@ public class DateUtil {
     public static java.sql.Date getCurrerntDateByDailyPoint() {
 
         if (StaticProperties.isIs15()) {
-            return DateUtil.getAfterDate();
+            return DateUtils.getAfterDate();
         } else {
-            return DateUtil.getSqlDate();
+            return DateUtils.getSqlDate();
         }
     }
 
     public static java.sql.Date getBeforeDateByDailyPoint() {
         if (StaticProperties.isIs15()) {
-            return DateUtil.getSqlDate();
+            return DateUtils.getSqlDate();
         } else {
-            return DateUtil.getBeforeDate();
+            return DateUtils.getBeforeDate();
         }
     }
 
@@ -1062,10 +1062,10 @@ public class DateUtil {
                 end.set(Calendar.SECOND, 59);
                 end.set(Calendar.MILLISECOND, 999);
             }
-            if (DateUtil.isInZoneStartNotEq(DateUtil.getLong(StaticProperties.stSplitby), DateUtil.getLong(cal.get(Calendar.HOUR_OF_DAY) + ":" + cal.get(Calendar.MINUTE)))) {
+            if (DateUtils.isInZoneStartNotEq(DateUtils.getLong(StaticProperties.stSplitby), DateUtils.getLong(cal.get(Calendar.HOUR_OF_DAY) + ":" + cal.get(Calendar.MINUTE)))) {
                 start.add(Calendar.DATE, -1);
             }
-            if (DateUtil.isInZoneStart(DateUtil.getLong(StaticProperties.stSplitby), DateUtil.getLong(cal.get(Calendar.HOUR_OF_DAY) + ":" + cal.get(Calendar.MINUTE)))) {
+            if (DateUtils.isInZoneStart(DateUtils.getLong(StaticProperties.stSplitby), DateUtils.getLong(cal.get(Calendar.HOUR_OF_DAY) + ":" + cal.get(Calendar.MINUTE)))) {
                 end.add(Calendar.DATE, 1);
             }
             if (start.getTime().compareTo(date1) <= 0 && end.getTime().compareTo(date1) >= 0) {
@@ -1381,7 +1381,7 @@ public class DateUtil {
     }
 
     public static Date addHoursInFuture(Date date, int numhour) {
-        return org.apache.commons.lang.time.DateUtils.truncate(new Date(date.getTime() + DateUtil.HOUR * numhour), Calendar.MINUTE);
+        return org.apache.commons.lang.time.DateUtils.truncate(new Date(date.getTime() + DateUtils.HOUR * numhour), Calendar.MINUTE);
     }
 
     public static String getDatePatternMMYYDDHHMM() {
