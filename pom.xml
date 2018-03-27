@@ -171,7 +171,7 @@
                 </executions>
                 <configuration>
                     <serverId>nexus</serverId>
-                    <nexusUrl>http://10.66.1.40:8081/nexus/</nexusUrl>
+                    <nexusUrl>http://nexus.91steel.com/nexus/</nexusUrl>
                     <skipStaging>true</skipStaging>
                 </configuration>
             </plugin>
