@@ -1,5 +1,6 @@
 package com.money.game.core.aspect;
 
+import com.money.game.basic.component.exception.GHException;
 import com.money.game.core.constant.ResponseData;
 import com.money.game.core.exception.BaseException;
 import lombok.extern.slf4j.Slf4j;
@@ -39,6 +40,10 @@ public class BaseExceptionAspect {
         BaseException bizEx;
         if (e instanceof BaseException) {
             bizEx = new BaseException(((BaseException) e).getCode(), e.getMessage());
+            log.warn("业务异常,errorCode={},errorMessge={},", bizEx.getCode(), bizEx.getMessage(), e);
+        } else if (e instanceof GHException) {
+            Integer code = ((GHException) e).getCode();
+            bizEx = new BaseException(String.valueOf(code), e.getMessage());
             log.warn("业务异常,errorCode={},errorMessge={},", bizEx.getCode(), bizEx.getMessage(), e);
         } else {
             bizEx = new BaseException("-1", "系统异常");
